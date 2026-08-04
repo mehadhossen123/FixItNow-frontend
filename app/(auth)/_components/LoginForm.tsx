@@ -56,7 +56,7 @@ const LoginForm = () => {
             <Lock size={18} />
           </div>
           <input
-          name="password"
+            name="password"
             type={showPassword ? "text" : "password"}
             placeholder="••••••••"
             className="input input-bordered w-full pl-10 pr-10 focus:input-primary transition-all"
@@ -75,9 +75,15 @@ const LoginForm = () => {
       {/* Submit Button */}
       <button
         type="submit"
-        className="btn btn-primary w-full shadow-lg shadow-primary/20 gap-2 mt-2"
+        className="btn font-bold text-white bg-orange-500 hover:bg-orange-600 w-full shadow-lg shadow-primary/20 gap-2 mt-2"
       >
-        <span>{isPending?<span className="loading loading-spinner loading-sm"></span>:"loading"}</span>
+        <span>
+          {isPending ? (
+            <span className="loading loading-spinner loading-sm"></span>
+          ) : (
+            "login"
+          )}
+        </span>
         <ArrowRight size={18} />
       </button>
     </form>

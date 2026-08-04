@@ -14,3 +14,23 @@ export interface UserProfileResponse {
     technicianProfile:null;
   };
 }
+
+
+export interface RegisteredUserData {
+  id: string;
+  name: string;
+  email: string;
+  role: "CUSTOMER" | "TECHNICIAN" | "ADMIN" | string;
+  isActive: boolean;
+  status: "ACTIVE" | "INACTIVE" | "BLOCKED" | string;
+  createdAt: string;
+  updatedAt: string;
+  stripeCustomerId: string | null;
+}
+
+
+export interface RegisterResponse {
+  success: boolean;
+  message: string;
+  data: RegisteredUserData;
+}

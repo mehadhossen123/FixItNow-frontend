@@ -68,7 +68,7 @@ const LoginPage = () => {
           
 
           {/* Divider */}
-          <div className="divider my-6 text-xs text-base-content/50 uppercase tracking-wider">
+          <div className="divider my-4 text-xs text-base-content/50 uppercase tracking-wider">
             OR
           </div>
 
@@ -96,13 +96,20 @@ const LoginPage = () => {
           </button> */}
 
           {/* Footer Link */}
-          <p className="text-center text-xs text-base-content/70 mt-6">
-            Don't have an account?{" "}
+          <p className="text-center text-xs text-base-content/70 mt-4">
+            Don't have an account? <br />
             <Link
-            href={"/register"}
+            href={"/customer-register"}
               className="text-primary font-bold hover:underline"
             >
-              Sign up
+              Sign up as customer
+            </Link>
+            <br />
+            <Link
+            href={"/technician-register"}
+              className="text-primary font-bold hover:underline"
+            >
+              Sign up as technician
             </Link>
           </p>
         </motion.div>

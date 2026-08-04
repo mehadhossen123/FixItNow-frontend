@@ -6,6 +6,7 @@ import Footer from "./(globalComponents)/footer";
 import Slider from "./(globalComponents)/slider";
 import Hero1 from "./(globalComponents)/Hero1";
 import ServiceHubs from "./(globalComponents)/HubCard";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,16 +36,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="">
-       
-        
-        
         <div className="">
+          <Toaster richColors position="top-right"/>
           {children}
-
-          
-
         </div>
-      
       </body>
     </html>
   );
