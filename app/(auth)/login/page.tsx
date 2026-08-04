@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
+
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
+
 import { motion } from "framer-motion";
+import LoginForm from "../_components/LoginForm";
 
 const LoginPage = () => {
-  const [showPassword, setShowPassword] = useState(false);
+  
 
   return (
     <div className="min-h-[85vh] flex items-center justify-center py-10 px-4 sm:px-6">
@@ -61,63 +62,10 @@ const LoginPage = () => {
               Please enter your details to continue
             </p>
           </div>
+          {/* form */}
+          <LoginForm></LoginForm>
 
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
-            {/* Email Field */}
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text font-semibold">Email Address</span>
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-base-content/40">
-                  <Mail size={18} />
-                </div>
-                <input
-                  type="email"
-                  placeholder="name@example.com"
-                  className="input input-bordered w-full pl-10 focus:input-primary transition-all"
-                  required
-                />
-              </div>
-            </div>
-
-            {/* Password Field */}
-            <div className="form-control">
-              <div className="flex justify-between items-center mb-1">
-                <label className="label p-0">
-                  <span className="label-text font-semibold">Password</span>
-                </label>
-               
-              </div>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-base-content/40">
-                  <Lock size={18} />
-                </div>
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="••••••••"
-                  className="input input-bordered w-full pl-10 pr-10 focus:input-primary transition-all"
-                  required
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center text-base-content/40 hover:text-base-content"
-                >
-                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-                </button>
-              </div>
-            </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className="btn btn-primary w-full shadow-lg shadow-primary/20 gap-2 mt-2"
-            >
-              <span>Login</span>
-              <ArrowRight size={18} />
-            </button>
-          </form>
+          
 
           {/* Divider */}
           <div className="divider my-6 text-xs text-base-content/50 uppercase tracking-wider">
@@ -125,7 +73,7 @@ const LoginPage = () => {
           </div>
 
           {/* Social Logins */}
-          <button className="btn btn-outline border-base-300 hover:border-base-300 hover:bg-base-200 text-base-content w-full gap-2">
+          {/* <button className="btn btn-outline border-base-300 hover:border-base-300 hover:bg-base-200 text-base-content w-full gap-2">
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path
                 fill="currentColor"
@@ -145,13 +93,13 @@ const LoginPage = () => {
               />
             </svg>
             Continue with Google
-          </button>
+          </button> */}
 
           {/* Footer Link */}
           <p className="text-center text-xs text-base-content/70 mt-6">
             Don't have an account?{" "}
             <Link
-              href="/register"
+            href={"/register"}
               className="text-primary font-bold hover:underline"
             >
               Sign up

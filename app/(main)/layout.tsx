@@ -2,11 +2,14 @@ import React from "react";
 import Navbar from "../(globalComponents)/navbar";
 
 import Footer from "../(globalComponents)/footer";
+import { getMe } from "../_service/getMe";
+import { UserProfileResponse } from "../_type/type";
 
-const MainLayout = ({ children }: { children: React.ReactNode }) => {
+const MainLayout = async({ children }: { children: React.ReactNode }) => {
+  const profile: UserProfileResponse=await getMe();
   return (
     <div className="">
-      <Navbar></Navbar>
+      <Navbar profile={profile}></Navbar>
       
 
       <main className="">

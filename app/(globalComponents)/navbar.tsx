@@ -1,8 +1,21 @@
 "use client";
 
 import Link from "next/link";
+import { UserProfileResponse } from "../_type/type";
+import { logout } from "../_service/logout";
 
-export default function Navbar() {
+interface NavbarProps {
+  profile: UserProfileResponse | null;
+}
+
+
+
+
+
+export default function Navbar({ profile }:  NavbarProps ) {
+  const user: UserProfileResponse | null= profile;
+  console.log("user",user?.data)
+
   return (
     <div className="navbar    max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* Navbar Start - Logo and Mobile Menu */}
@@ -55,7 +68,6 @@ export default function Navbar() {
           </li>
           <li>
             <Link href="/more">More</Link>
-          
           </li>
           <li>
             <Link href="/contact">Contact</Link>
@@ -64,7 +76,7 @@ export default function Navbar() {
       </div>
 
       {/* Navbar End - Profile Picture Dropdown */}
-      <div className="navbar-end">
+     {user?.success? <div className="navbar-end">
         <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
@@ -78,7 +90,8 @@ export default function Navbar() {
           <ul
             tabIndex={-1}
             className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow"
-          >
+          >  <p className="font-bold ml-3">{user?.data?.name}</p>
+             <p className="font-bold ml-3">{user?.data.email}</p>
             <li>
               <Link href="/profile">Profile</Link>
             </li>
@@ -88,12 +101,12 @@ export default function Navbar() {
             <li>
               <Link href="/dashboard">Dashboard</Link>
             </li>
-            <li>
+            <li className="font-bold text-red-600" onClick={()=>{logout()}}>
               <a>Logout</a>
             </li>
           </ul>
         </div>
-      </div>
+      </div>:<Link className="navbar-end font-bold text-primary" href={"/login"}>Login</Link>}
     </div>
   );
 }

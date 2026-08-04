@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/jsonwebtoken": "^9.0.10",
+    "axios": "^1.19.0",
     "daisyui": "^5.7.13",
     "framer-motion": "^12.43.0",
     "jsonwebtoken": "^9.0.3",
