@@ -1,6 +1,7 @@
 import { getAllService } from "@/app/(customer)/_actions/getAllService";
 import ServiceList from "@/app/(customer)/_components/ServiceList";
-import React from "react";
+import React, { Suspense } from "react";
+import ServiceListSkeleton from "./loading";
 
 
 const AllServiceGetPage = async () => {
@@ -12,7 +13,8 @@ const AllServiceGetPage = async () => {
     : servicesData?.data || [];
 
   return (
-    <div className="min-h-screen bg-slate-50/50 py-10">
+   <Suspense fallback={<ServiceListSkeleton></ServiceListSkeleton> }>
+     <div className="min-h-screen bg-slate-50/50 py-10">
       {/*  */}
       <div className="flex justify-center items-center">
         <div className="max-w-7xl mx-auto px-4 mb-8 text-center md:text-left">
@@ -41,6 +43,7 @@ const AllServiceGetPage = async () => {
         <ServiceList services={services}></ServiceList>
       )}
     </div>
+   </Suspense>
   );
 };
 
