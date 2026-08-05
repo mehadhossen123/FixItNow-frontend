@@ -11,10 +11,9 @@ export interface UserProfileResponse {
     createdAt: string;
     updatedAt: string;
     stripeCustomerId: string | null;
-    technicianProfile:null;
+    technicianProfile: null;
   };
 }
-
 
 export interface RegisteredUserData {
   id: string;
@@ -28,13 +27,11 @@ export interface RegisteredUserData {
   stripeCustomerId: string | null;
 }
 
-
 export interface RegisterResponse {
   success: boolean;
   message: string;
   data: RegisteredUserData;
 }
-
 
 export interface CategoryData {
   id: string;
@@ -43,7 +40,6 @@ export interface CategoryData {
   createdAt: string;
   updatedAt: string;
 }
-
 
 export interface PostCategoryResponse {
   success: boolean;
@@ -59,13 +55,9 @@ export interface Category {
   updatedAt: string;
 }
 
-
-
-export type UserRole = 'ADMIN' | 'TECHNICIAN' | 'CUSTOMER';
-
+export type UserRole = "ADMIN" | "TECHNICIAN" | "CUSTOMER";
 
 export type UserStatus = "ACTIVE" | "BLOCKED";
-
 
 export interface User {
   id: string;
@@ -77,4 +69,32 @@ export interface User {
   createdAt: string; // ISO Date String
   updatedAt: string; // ISO Date String
   stripeCustomerId: string | null;
+}
+
+export interface ServiceItem {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  categoryId: string;
+  technicianId: string;
+  createdAt: string;
+  updatedAt: string;
+  technician: {
+    id: string;
+    userId: string;
+    bio: string;
+    experience: number;
+    location: string;
+    slots?: any[];
+    user?: {
+      name?: string;
+      email?: string;
+      profileImg?: string;
+    };
+  };
+}
+
+ export interface ServiceCardProps {
+  services: ServiceItem[];
 }
