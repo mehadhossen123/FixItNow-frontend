@@ -109,7 +109,7 @@ const ServiceList = ({ services }: ServiceCardProps) => {
               </span>
 
               <Link
-                href={`/services/${service.id}`}
+                href={`/dashboard/get-service/${service.id}`}
                 className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-xs py-2.5 px-4 rounded-xl transition-all duration-200 shadow-md shadow-orange-500/20 active:scale-95"
               >
                 View Details

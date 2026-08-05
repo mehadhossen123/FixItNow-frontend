@@ -95,6 +95,14 @@ export interface ServiceItem {
   };
 }
 
- export interface ServiceCardProps {
+export interface ServiceCardProps {
   services: ServiceItem[];
 }
+
+export interface PayloadInterface {
+  technicianId: string;
+  serviceId: string;
+  bookingDate: string;
+  totalCost: number;
+}
+
