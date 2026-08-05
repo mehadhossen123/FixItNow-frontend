@@ -1,5 +1,12 @@
 import { getMe } from "@/app/_service/getMe";
-import { CirclePlus, FolderPlus, House, Menu, UserShield } from "lucide-react";
+import {
+  CirclePlus,
+  FolderPlus,
+  House,
+  Menu,
+  UserShield,
+  Wrench,
+} from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -8,46 +15,43 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   const userRole = user?.data?.role;
 
   return (
-    <div className="drawer lg:drawer-open">
-      <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
+    <div className="flex min-h-screen bg-slate-100">
+      {/* 🟢 ১. টগল করার হিডেন চেকবক্স (Peer Class সহ) */}
+      <input
+        id="sidebar-toggle"
+        type="checkbox"
+        className="peer hidden"
+        defaultChecked
+      />
 
-      {/* ডানপাশের কনটেন্ট এলাকা */}
-      <div className="drawer-content flex flex-col min-h-screen">
-        {/* Navbar */}
-        <nav className="navbar w-full bg-base-300">
-          <label
-            htmlFor="my-drawer-4"
-            className="btn btn-square btn-ghost drawer-button cursor-pointer lg:hidden"
-          >
-            <Menu size={22} />
-          </label>
-          <div className="px-4 font-bold flex items-center gap-2">
-            <img className="rounded-full w-8 h-8" src="/logo.jpeg" alt="Logo" />
-            <span>
+      {/* 🟢 ২. সাইডবার (peer-checked ট্রিগার অনুযায়ী রেসপন্স করবে) */}
+      <aside className="fixed top-0 left-0 z-40 h-screen transition-all duration-300 bg-base-200 border-r border-base-300 flex flex-col w-16 peer-checked:w-64 overflow-hidden">
+        {/* সাইডবার হেডার / লোগো */}
+        <div className="h-16 flex items-center px-4 border-b border-base-300 shrink-0">
+          <div className="flex items-center gap-3 min-w-max">
+            <img
+              className="rounded-full w-8 h-8 shrink-0"
+              src="/logo.jpeg"
+              alt="Logo"
+            />
+            <span className="font-bold text-lg whitespace-nowrap opacity-0 peer-checked:opacity-100 transition-opacity duration-200">
               <span className="text-yellow-600">FixIT</span> Now
             </span>
           </div>
-        </nav>
+        </div>
 
-        {/* page content */}
-        <main className="p-4 sm:p-6 flex-1 bg-base-100">{children}</main>
-      </div>
-
-      {/*  */}
-      <div className="drawer-side z-50 is-drawer-close:overflow-visible">
-        <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-
-        <div className="flex min-h-full flex-col items-start bg-base-200 transition-all duration-300 is-drawer-close:w-16 is-drawer-open:w-64 p-2 sm:p-3">
-          <ul className="menu w-full space-y-2 p-0">
+        {/* নেভিগেশন মেনু */}
+        <div className="flex-1 overflow-y-auto overflow-x-hidden p-2">
+          <ul className="space-y-2 font-medium">
             {/* হোম পেজ */}
             <li>
               <Link
                 href="/"
-                className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-3 p-3 rounded-lg hover:bg-base-300"
-                data-tip="Homepage"
+                className="flex items-center gap-4 p-3 text-base-content rounded-lg hover:bg-base-300 transition-colors"
+                title="Homepage"
               >
                 <House size={22} className="shrink-0" />
-                <span className="is-drawer-close:hidden font-medium">
+                <span className="whitespace-nowrap hidden peer-checked:inline font-medium">
                   Homepage
                 </span>
               </Link>
@@ -59,11 +63,11 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
                 <li>
                   <Link
                     href="/dashboard/get-category"
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-3 p-3 rounded-lg hover:bg-base-300"
-                    data-tip="All Categories"
+                    className="flex items-center gap-4 p-3 text-base-content rounded-lg hover:bg-base-300 transition-colors"
+                    title="All Categories"
                   >
                     <FolderPlus size={22} className="shrink-0" />
-                    <span className="is-drawer-close:hidden font-medium">
+                    <span className="whitespace-nowrap hidden peer-checked:inline font-medium">
                       All Categories
                     </span>
                   </Link>
@@ -71,11 +75,11 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
                 <li>
                   <Link
                     href="/dashboard/categories/create"
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-3 p-3 rounded-lg hover:bg-base-300"
-                    data-tip="Post Category"
+                    className="flex items-center gap-4 p-3 text-base-content rounded-lg hover:bg-base-300 transition-colors"
+                    title="Post Category"
                   >
                     <CirclePlus size={22} className="shrink-0" />
-                    <span className="is-drawer-close:hidden font-medium">
+                    <span className="whitespace-nowrap hidden peer-checked:inline font-medium">
                       Post Category
                     </span>
                   </Link>
@@ -83,20 +87,56 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
                 <li>
                   <Link
                     href="/dashboard/get-all-user"
-                    className="is-drawer-close:tooltip is-drawer-close:tooltip-right flex items-center gap-3 p-3 rounded-lg hover:bg-base-300"
-                    data-tip="Get all user"
+                    className="flex items-center gap-4 p-3 text-base-content rounded-lg hover:bg-base-300 transition-colors"
+                    title="Get all user"
                   >
-                    
-                    <UserShield size={22} className="shrink-0"/>
-                    <span className="is-drawer-close:hidden font-medium">
+                    <UserShield size={22} className="shrink-0" />
+                    <span className="whitespace-nowrap hidden peer-checked:inline font-medium">
                       Get all user
                     </span>
                   </Link>
                 </li>
               </>
             )}
+
+            {/* Technician Items */}
+            {user && userRole === "TECHNICIAN" && (
+              <li>
+                <Link
+                  href="/dashboard/post-service"
+                  className="flex items-center gap-4 p-3 text-base-content rounded-lg hover:bg-base-300 transition-colors"
+                  title="Post service"
+                >
+                  <Wrench size={22} className="shrink-0" />
+                  <span className="whitespace-nowrap hidden peer-checked:inline font-medium">
+                    Post service
+                  </span>
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
+      </aside>
+
+      {/* 🟢 ৩. মূল কন্টেন্ট এরিয়া (Peer Checked হলে মার্জিন অ্যাডজাস্ট হবে) */}
+      <div className="flex-1 flex flex-col min-h-screen transition-all duration-300 ml-16 peer-checked:ml-64">
+        {/* Navbar */}
+        <nav className="navbar w-full bg-base-300 px-4 sticky top-0 z-30 border-b border-base-300">
+          <label
+            htmlFor="sidebar-toggle"
+            className="btn btn-square btn-ghost cursor-pointer"
+            title="Toggle Menu"
+          >
+            <Menu size={22} />
+          </label>
+
+          <div className="px-4 font-bold flex items-center gap-2">
+            <span>Dashboard</span>
+          </div>
+        </nav>
+
+        {/* Page Content */}
+        <main className="p-4 sm:p-6 flex-1 bg-base-100">{children}</main>
       </div>
     </div>
   );

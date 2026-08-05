@@ -4,7 +4,7 @@ import { fetchAxios } from "@/app/(globalComponents)/axios/axios";
 import { cookies } from "next/headers";
 
 
-export const getAllCategories=async()=>{
+export const getAllCategoriesByTechnician=async()=>{
     const cookieStore=await cookies()
     const accessToken= cookieStore.get("accessToken")?.value
      if (!accessToken) {
@@ -16,7 +16,7 @@ export const getAllCategories=async()=>{
 
     try {
         
-        const result = await fetchAxios.get("/api/admin/categories", {
+        const result = await fetchAxios.get("/api/customer/categories", {
           headers: {
             Cookie: `accessToken=${accessToken}`,
           },
