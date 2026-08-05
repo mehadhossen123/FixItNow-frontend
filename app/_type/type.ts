@@ -105,4 +105,19 @@ export interface PayloadInterface {
   bookingDate: string;
   totalCost: number;
 }
+ 
+ interface User {
+  name?: string;
+  email?: string;
+  image?: string;
+}
 
+export interface Technician {
+  id: string;
+  userId: string;
+  bio?: string | null;
+  experience: number;
+  location: string;
+  slots: any[];
+  user?: User;
+}

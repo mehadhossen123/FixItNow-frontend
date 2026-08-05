@@ -6,6 +6,7 @@ import {
   List,
   ListSortDescending,
   Menu,
+  Users,
   UserShield,
   Wrench,
 } from "lucide-react";
@@ -166,13 +167,29 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
                       className="w-full flex cursor-pointer items-center gap-4 p-3 text-base-content rounded-lg hover:bg-base-300 transition-colors relative group"
                       title="Service Category"
                     >
-                      
-                      <ListSortDescending size={22} className="shrink-0"/>
+                      <ListSortDescending size={22} className="shrink-0" />
                       <span className="whitespace-nowrap opacity-0 peer-checked:opacity-100 transition-opacity duration-200 inline-block">
                         Service Category
                       </span>
                       <span className="absolute left-16 bg-base-300 text-base-content text-sm px-2 py-1 rounded opacity-0 pointer-events-none peer-checked:hidden group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
                         Service Category
+                      </span>
+                    </button>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/dashboard/get-all-technician">
+                    <button
+                      className="w-full flex cursor-pointer items-center gap-4 p-3 text-base-content rounded-lg hover:bg-base-300 transition-colors relative group"
+                      title=" All Technician"
+                    >
+                      
+                      <Users size={22} className="shrink-0"/>
+                      <span className="whitespace-nowrap opacity-0 peer-checked:opacity-100 transition-opacity duration-200 inline-block">
+                        All Technician
+                      </span>
+                      <span className="absolute left-16 bg-base-300 text-base-content text-sm px-2 py-1 rounded opacity-0 pointer-events-none peer-checked:hidden group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                        All Technician
                       </span>
                     </button>
                   </Link>

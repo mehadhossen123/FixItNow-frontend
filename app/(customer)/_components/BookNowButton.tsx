@@ -41,7 +41,7 @@ const BookNowButton = ({ singleService }: BookNowButtonProps) => {
     };
 
      const result=await bookingService({payload})
-     console.log(result)
+     
       if(!result&&!(result.success=="true"||result.success==true)){
         return
       }
