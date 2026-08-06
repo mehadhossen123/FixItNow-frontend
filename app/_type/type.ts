@@ -121,3 +121,27 @@ export interface Technician {
   slots: any[];
   user?: User;
 }
+
+
+
+
+ export interface BookingItem {
+  id: string;
+  totalCost: string;
+  status: "PENDING" | "COMPLETED" | "CANCELLED" | string;
+  bookingDate: string;
+  createdAt: string;
+  service?: {
+    title: string;
+    description: string;
+    price: number;
+  };
+  technician?: {
+    location: string;
+    experience: number;
+    user?: {
+      name: string;
+      email: string;
+    };
+  };
+}

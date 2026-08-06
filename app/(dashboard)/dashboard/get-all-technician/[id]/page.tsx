@@ -44,7 +44,7 @@ const SingleTechnician = async ({
           removed.
         </p>
         <Link
-        
+          href="/dashboard/get-all-technician"
           className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-orange-500 transition-colors"
         >
           <ArrowLeft className="w-4 h-4" /> Back to Technicians
