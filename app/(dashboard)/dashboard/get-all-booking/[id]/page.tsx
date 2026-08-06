@@ -12,13 +12,12 @@ import {
   XCircle,
   BadgeDollarSign,
   ArrowLeft,
-  User,
-  Mail,
-  Phone,
   FileText,
   ShieldCheck,
+  CreditCard,
 } from "lucide-react";
 import SingleBookingSkeleton from "./loading";
+import PaymentButton from "@/app/(customer)/_components/PaymentButton";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -33,33 +32,43 @@ const SingleBookingPage = async ({ params }: PageProps) => {
 
   const booking = bookings.find((book: BookingItem) => book.id === id);
 
-  // Status Badge Helper
+  // Status Badge Helper (Simple if-else)
   const getStatusBadge = (status: string) => {
-    switch (status?.toUpperCase()) {
-      case "COMPLETED":
-        return (
-          <span className="inline-flex items-center text-yellow-700 gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50  border border-emerald-200">
-            <CheckCircle2 className="w-3.5 h-3.5" /> Completed
-          </span>
-        );
-      case "PENDING":
-        return (
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">
-            <Clock className="w-3.5 h-3.5" /> Pending
-          </span>
-        );
-      case "CANCELLED":
-        return (
-          <span className="inline-flex items-center gap-1.5 text-red-700 px-3 py-1 rounded-full text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200">
-            <XCircle className="w-3.5 h-3.5" /> Cancelled
-          </span>
-        );
-      default:
-        return (
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-gray-50 text-gray-700 border border-gray-200">
-            <AlertCircle className="w-3.5 h-3.5" /> {status}
-          </span>
-        );
+    const formattedStatus = status?.toUpperCase();
+
+    if (formattedStatus === "COMPLETED" || formattedStatus === "COMPLETE") {
+      return (
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+          <CheckCircle2 className="w-3.5 h-3.5" /> Completed
+        </span>
+      );
+    } else if (formattedStatus === "PENDING") {
+      return (
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">
+          <Clock className="w-3.5 h-3.5" /> Pending
+        </span>
+      );
+    } else if (
+      formattedStatus === "CANCELLED" ||
+      formattedStatus === "DECLINE"
+    ) {
+      return (
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200">
+          <XCircle className="w-3.5 h-3.5" /> Cancelled
+        </span>
+      );
+    } else if (formattedStatus === "PAID") {
+      return (
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">
+          <CreditCard className="w-3.5 h-3.5" /> Paid
+        </span>
+      );
+    } else {
+      return (
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-gray-50 text-gray-700 border border-gray-200">
+          <AlertCircle className="w-3.5 h-3.5" /> {status}
+        </span>
+      );
     }
   };
 
@@ -88,7 +97,7 @@ const SingleBookingPage = async ({ params }: PageProps) => {
   }
 
   return (
-    <Suspense fallback={<SingleBookingSkeleton/>}>
+    <Suspense fallback={<SingleBookingSkeleton />}>
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Back Button */}
         <div className="mb-6">
@@ -104,7 +113,7 @@ const SingleBookingPage = async ({ params }: PageProps) => {
         <div className="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
           {/* Header Section */}
           <div className="p-6 sm:p-8 border-b border-gray-100 bg-gray-50/50">
-            <div className="flex flex-wrap items-start justify-between gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
                 <div className="flex items-center gap-2 mb-2">
                   <span className="text-xs font-semibold uppercase tracking-wider text-gray-400">
@@ -113,12 +122,27 @@ const SingleBookingPage = async ({ params }: PageProps) => {
                   <span className="text-xs font-mono font-medium text-gray-700 bg-gray-100 px-2 py-0.5 rounded">
                     {booking.id}
                   </span>
+                  {getStatusBadge(booking.status)}
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
                   {booking.service?.title || "Service Title Unavailable"}
                 </h1>
               </div>
-              <div>{getStatusBadge(booking.status)}</div>
+
+              {/* Professional Payment Button Section */}
+              <div className="flex items-center gap-3">
+                {booking.status === "ACCEPT" && (
+                  // payment button is here 
+                  <PaymentButton booking={booking}/>
+                )}
+
+                {booking.status === "PAID" && (
+                  <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-50 text-emerald-700 font-semibold text-xs border border-emerald-200">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                    Payment Complete
+                  </span>
+                )}
+              </div>
             </div>
           </div>
 
