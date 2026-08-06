@@ -5,7 +5,7 @@ import { User } from "@/app/_type/type";
 import React from "react";
 
 const GetAllUser = async () => {
-  // ১. ব্যাকএন্ড সার্ভার অ্যাকশন থেকে ইউজার ডাটা ফেচ করা
+ 
   const usersResponse = await getAllUser();
 
   const users: User[] = Array.isArray(usersResponse)

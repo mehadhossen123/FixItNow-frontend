@@ -2,10 +2,14 @@ import { getMe } from "@/app/_service/getMe";
 import {
   CirclePlus,
   FolderPlus,
+  GroupIcon,
   House,
   List,
+  ListChevronsDownUp,
   ListSortDescending,
+  LucideNotebookTabs,
   Menu,
+  PlusIcon,
   Users,
   UserShield,
   Wrench,
@@ -100,6 +104,39 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
                     </button>
                   </Link>
                 </li>
+                <li>
+                  <Link href="/dashboard/get-admin-all-booking">
+                    <button
+                      className="w-full cursor-pointer flex items-center gap-4 p-3 text-base-content rounded-lg hover:bg-base-300 transition-colors relative group"
+                      title="All Booking"
+                    >
+                      <ListChevronsDownUp size={22} className="shrink-0" />
+                      <span className="whitespace-nowrap opacity-0 peer-checked:opacity-100 transition-opacity duration-200 inline-block">
+                        All Booking
+                      </span>
+                      <span className="absolute left-16 bg-base-300 text-base-content text-sm px-2 py-1 rounded opacity-0 pointer-events-none peer-checked:hidden group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                        All Booking
+                      </span>
+                    </button>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link href="/dashboard/get-all-user">
+                    <button
+                      className="w-full cursor-pointer flex items-center gap-4 p-3 text-base-content rounded-lg hover:bg-base-300 transition-colors relative group"
+                      title="All users"
+                    >
+                      <GroupIcon size={22} className="shrink-0"></GroupIcon>
+                      <span className="whitespace-nowrap opacity-0 peer-checked:opacity-100 transition-opacity duration-200 inline-block">
+                        All users
+                      </span>
+                      <span className="absolute left-16 bg-base-300 text-base-content text-sm px-2 py-1 rounded opacity-0 pointer-events-none peer-checked:hidden group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                        All users
+                      </span>
+                    </button>
+                  </Link>
+                </li>
               </>
             )}
 
@@ -107,33 +144,33 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
             {userRole === "TECHNICIAN" && (
               <>
                 <li>
-                  <Link href="/dashboard/all-request">
+                  <Link href="/dashboard/post-service">
                     <button
                       className="w-full flex items-center cursor-pointer gap-4 p-3 text-base-content rounded-lg hover:bg-base-300 transition-colors relative group"
                       title="All Requests"
                     >
-                      <List size={22} className="shrink-0" />
+                      <PlusIcon size={22} className="shrink-0"></PlusIcon>
                       <span className="whitespace-nowrap opacity-0 peer-checked:opacity-100 transition-opacity duration-200 inline-block">
-                        All Requests
+                        Post Service
                       </span>
                       <span className="absolute left-16 bg-base-300 text-base-content text-sm px-2 py-1 rounded opacity-0 pointer-events-none peer-checked:hidden group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-                        All Requests
+                        Post Service
                       </span>
                     </button>
                   </Link>
                 </li>
                 <li>
-                  <Link href="/dashboard/my-request">
+                  <Link href="/dashboard/get-technician-booking">
                     <button
                       className="w-full flex cursor-pointer items-center gap-4 p-3 text-base-content rounded-lg hover:bg-base-300 transition-colors relative group"
                       title="My Requests"
                     >
-                      <Wrench size={22} className="shrink-0" />
+                      <LucideNotebookTabs size={22} className="shrink-0" />
                       <span className="whitespace-nowrap opacity-0 peer-checked:opacity-100 transition-opacity duration-200 inline-block">
-                        My Requests
+                        My Booking
                       </span>
                       <span className="absolute left-16 bg-base-300 text-base-content text-sm px-2 py-1 rounded opacity-0 pointer-events-none peer-checked:hidden group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-                        My Requests
+                        My Booking
                       </span>
                     </button>
                   </Link>
