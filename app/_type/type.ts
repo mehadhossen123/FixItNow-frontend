@@ -145,3 +145,31 @@ export interface Technician {
     };
   };
 }
+
+
+
+// Booking Nested Object Interface
+export interface IBooking {
+  id: string;
+  customerId: string;
+  serviceId: string;
+  technicianId: string;
+  totalCost: string; // response e string hisebe asche ('600')
+  status: "PAID" | "PENDING" | "CANCELLED" | "ACCEPTED"; 
+  bookingDate: string; // ISO Date String
+  createdAt: string;
+  updatedAt: string;
+}
+
+// Main Payment History Interface
+export interface IPaymentHistory {
+  id: string;
+  bookingId: string;
+  customerId: string;
+  status: "PAID" | "UNPAID" | "REFUNDED" | string;
+  createdAt: string;
+  updatedAt: string;
+  booking: IBooking;
+}
+
+/
