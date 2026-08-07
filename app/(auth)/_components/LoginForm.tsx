@@ -3,7 +3,7 @@
 import React, { useActionState, useEffect, useState } from 'react'
 import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 import { loginAction, LoginResponse } from '../_actions/loginAction';
-import { tr } from 'framer-motion/client';
+
 import { toast } from 'sonner';
 import { useRouter, useSearchParams } from 'next/navigation';
 

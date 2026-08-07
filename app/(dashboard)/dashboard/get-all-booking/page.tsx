@@ -1,4 +1,5 @@
 // app/dashboard/get-all-booking/page.tsx
+export const dynamic = "force-dynamic";
 
 import { getAllBooking } from "@/app/(customer)/_actions/getAllBooking";
 import React, { Suspense } from "react";

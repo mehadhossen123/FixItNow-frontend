@@ -1,6 +1,5 @@
 "use client";
 
-
 import { useSearchParams } from "next/navigation";
 import {
   CheckCircle2,
@@ -10,8 +9,10 @@ import {
   FileText,
 } from "lucide-react";
 import Link from "next/link";
+import { Suspense } from "react";
 
-const PaymentSuccessPage = () => {
+// 1. UI and useSearchParams Component
+const PaymentSuccessContent = () => {
   const searchParams = useSearchParams();
   const bookingId = searchParams.get("bookingId");
   const rawAmount = searchParams.get("amount");
@@ -136,7 +137,7 @@ const PaymentSuccessPage = () => {
         </div>
       </div>
 
-      {/* Action Buttons (Hidden during Printing) */}
+      {/* Action Buttons */}
       <div className="mt-6 flex flex-wrap items-center justify-between gap-3 print:hidden">
         <Link
           href="/dashboard/get-all-booking"
@@ -157,4 +158,13 @@ const PaymentSuccessPage = () => {
   );
 };
 
-export default PaymentSuccessPage;
+// 2. Main Page Component exporting with Suspense Boundary
+export default function PaymentSuccessPage() {
+  return (
+    <Suspense
+      fallback={<div className="text-center py-10">Loading invoice...</div>}
+    >
+      <PaymentSuccessContent />
+    </Suspense>
+  );
+}

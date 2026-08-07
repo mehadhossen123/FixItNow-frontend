@@ -44,7 +44,7 @@ export interface CategoryData {
 export interface PostCategoryResponse {
   success: boolean;
   message: string;
-  data?: CategoryData; // ব্যর্থ হলে data নাও থাকতে পারে, তাই optional (?) রাখা হয়েছে
+  data?: CategoryData; 
 }
 
 export interface Category {
@@ -106,11 +106,7 @@ export interface PayloadInterface {
   totalCost: number;
 }
  
- interface User {
-  name?: string;
-  email?: string;
-  image?: string;
-}
+ 
 
 export interface Technician {
   id: string;
@@ -119,7 +115,7 @@ export interface Technician {
   experience: number;
   location: string;
   slots: any[];
-  user?: User;
+  user?:any;
 }
 
 

@@ -1,11 +1,10 @@
+export const dynamic = "force-dynamic";
 import { getAllTechnician } from "@/app/(customer)/_actions/getTechnician";
 import React from "react";
 import { MapPin, Briefcase, UserCheck, Star, User } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link"; 
+import Link from "next/link";
 import { Technician } from "@/app/_type/type";
-
-
 
 const GetAllTechnician = async () => {
   // fetch data

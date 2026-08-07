@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import React from "react";
 import { getPaymentHistory } from "@/app/(payment)/_action/getPaymentHistory";
 import {
