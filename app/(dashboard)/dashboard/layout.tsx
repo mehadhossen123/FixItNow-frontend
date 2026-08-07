@@ -11,6 +11,7 @@ import {
   ListSortDescending,
   LucideNotebookTabs,
   Menu,
+  MessageCircle,
   PlusIcon,
   Users,
   UserShield,
@@ -132,10 +133,29 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
                     >
                       <GroupIcon size={22} className="shrink-0"></GroupIcon>
                       <span className="whitespace-nowrap opacity-0 peer-checked:opacity-100 transition-opacity duration-200 inline-block">
-                        All users
+                        all users
                       </span>
                       <span className="absolute left-16 bg-base-300 text-base-content text-sm px-2 py-1 rounded opacity-0 pointer-events-none peer-checked:hidden group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
-                        All users
+                        all users
+                      </span>
+                    </button>
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/dashboard/get-all-user-message">
+                    <button
+                      className="w-full cursor-pointer flex items-center gap-4 p-3 text-base-content rounded-lg hover:bg-base-300 transition-colors relative group"
+                      title="user message"
+                    >
+                      <MessageCircle
+                        size={22}
+                        className="shrink-0"
+                      ></MessageCircle>
+                      <span className="whitespace-nowrap opacity-0 peer-checked:opacity-100 transition-opacity duration-200 inline-block">
+                        user message
+                      </span>
+                      <span className="absolute left-16 bg-base-300 text-base-content text-sm px-2 py-1 rounded opacity-0 pointer-events-none peer-checked:hidden group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                        user message
                       </span>
                     </button>
                   </Link>
@@ -182,7 +202,7 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
             )}
 
             {/* Customer Items */}
-            { (userRole===null ||userRole === "CUSTOMER") && (
+            {(userRole === null || userRole === "CUSTOMER") && (
               <>
                 <li>
                   <Link href="/dashboard/get-service">

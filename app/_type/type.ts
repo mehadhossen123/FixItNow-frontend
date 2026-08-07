@@ -173,9 +173,20 @@ export interface IPaymentHistory {
 }
 
 export interface Message{
+  id:string,
   name:string,
   email:string,
   phone:string,
   text:string
 
+}
+
+
+export interface MessageItem {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  text: string;
+  createdAt: string;
 }

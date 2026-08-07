@@ -1,11 +1,23 @@
 "use client"
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
 import { handleContact } from "../_action/contact";
 import {motion} from "framer-motion"
+import { toast } from "sonner";
+
 
 const ContractForm = () => {
     const [state, action, isPending] = useActionState(handleContact,false);
+   useEffect(()=>{
+    if(state &&(state.success==false|| state.success=="false")){
+        return
+
+    }
+    if(state &&(state.success==true|| state.success=="true")){
+        toast.success("Your message is submitted. We just reach you soon")
+
+    }
+   },[state])
 
   return (
     <form action={action} className="space-y-5">
@@ -38,7 +50,7 @@ const ContractForm = () => {
       <div className="space-y-1.5">
         <label className="text-xs font-semibold text-gray-700">Phone</label>
         <input
-        name="number"
+          name="number"
           type="tel"
           placeholder="123 456 7890"
           className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-orange-500 transition"
@@ -48,7 +60,7 @@ const ContractForm = () => {
       <div className="space-y-1.5">
         <label className="text-xs font-semibold text-gray-700">Message *</label>
         <textarea
-        name="text"
+          name="text"
           rows={4}
           placeholder="Tell us briefly about your needs"
           className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-orange-500 transition resize-none"
@@ -56,12 +68,16 @@ const ContractForm = () => {
       </div>
 
       <motion.button
-      whileHover={{scale:1.05}}
-      whileTap={{scale:.60}}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.6 }}
         type="submit"
         className="bg-[#ee5a0c] hover:bg-orange-600 cursor-pointer text-white font-semibold px-7 py-2.5 rounded-lg text-sm shadow transition duration-300"
       >
-        Submit
+        {isPending ? (
+          <span className="loading loading-spinner loading-sm"></span>
+        ) : (
+          "Submit"
+        )}
       </motion.button>
     </form>
   );
