@@ -1,4 +1,6 @@
+"use client"
 import { Mail} from "lucide-react";
+import ContractForm from "./ContractForm";
 
 export default function ContactSection() {
   return (
@@ -48,7 +50,7 @@ export default function ContactSection() {
             <div>
               <p className="text-xs text-orange-200 font-medium">Email</p>
               <p className="text-base font-semibold text-white">
-                admin@mrfixithq.com
+                mehad004938@gmail.com
               </p>
             </div>
           </div>
@@ -56,60 +58,7 @@ export default function ContactSection() {
 
         {/* Right Side Static Form */}
         <div className="bg-white text-gray-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-5">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-gray-700">
-                  Your name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-orange-500 transition"
-                />
-              </div>
-
-              <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-gray-700">
-                  Email address *
-                </label>
-                <input
-                  type="email"
-                  placeholder="example@email.com"
-                  className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-orange-500 transition"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-gray-700">
-                Phone
-              </label>
-              <input
-                type="tel"
-                placeholder="123 456 7890"
-                className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-orange-500 transition"
-              />
-            </div>
-
-            <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-gray-700">
-                Message *
-              </label>
-              <textarea
-                rows={4}
-                placeholder="Tell us briefly about your needs"
-                className="w-full px-3.5 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-orange-500 transition resize-none"
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              className="bg-[#ee5a0c] hover:bg-orange-600 text-white font-semibold px-7 py-2.5 rounded-lg text-sm shadow transition duration-300"
-            >
-              Submit
-            </button>
-          </form>
+          <ContractForm></ContractForm>
         </div>
       </div>
     </section>

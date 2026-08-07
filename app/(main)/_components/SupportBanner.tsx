@@ -38,14 +38,7 @@ export default function SupportBanner() {
         </div>
 
         {/* Action Button */}
-        <div>
-          <Link
-            href="/request-service"
-            className="inline-block bg-[#ee5a0c] hover:bg-orange-600 text-white font-semibold px-8 py-3.5 rounded-xl shadow-lg transition duration-300 text-sm uppercase tracking-wider"
-          >
-            REQUEST A SERVICE
-          </Link>
-        </div>
+        
       </div>
     </section>
   );

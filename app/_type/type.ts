@@ -172,4 +172,10 @@ export interface IPaymentHistory {
   booking: IBooking;
 }
 
-/
+export interface Message{
+  name:string,
+  email:string,
+  phone:string,
+  text:string
+
+}
