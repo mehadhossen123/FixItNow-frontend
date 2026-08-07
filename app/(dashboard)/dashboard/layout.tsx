@@ -21,7 +21,8 @@ import React from "react";
 
 const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
   const user = await getMe();
-  const userRole = user?.data?.role;
+  const userRole = user?.data?.role ||null
+
 
   return (
     <div className="flex min-h-screen bg-slate-100">
@@ -181,7 +182,7 @@ const DashboardLayout = async ({ children }: { children: React.ReactNode }) => {
             )}
 
             {/* Customer Items */}
-            {userRole === "CUSTOMER" && (
+            { (userRole===null ||userRole === "CUSTOMER") && (
               <>
                 <li>
                   <Link href="/dashboard/get-service">

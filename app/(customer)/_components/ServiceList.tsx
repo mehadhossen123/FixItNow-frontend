@@ -10,11 +10,14 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { ServiceCardProps } from "@/app/_type/type";
+import { getMe } from "@/app/_service/getMe";
 
 
 
 
-const ServiceList = ({ services }: ServiceCardProps) => {
+const ServiceList =async ({ services }: ServiceCardProps) => {
+  const user = await getMe();
+    const userRole = user?.data?.role
   return (
     <div className="max-w-7xl mx-auto px-4 py-4">
       {/*  Service Grid */}
@@ -108,13 +111,22 @@ const ServiceList = ({ services }: ServiceCardProps) => {
                 Fast Service
               </span>
 
-              <Link
-                href={`/dashboard/get-service/${service.id}`}
-                className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-xs py-2.5 px-4 rounded-xl transition-all duration-200 shadow-md shadow-orange-500/20 active:scale-95"
-              >
-                View Details
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              {userRole == "CUSTOMER" ? (
+                <Link
+                  href={`/dashboard/get-service/${service.id}`}
+                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-xs py-2.5 px-4 rounded-xl transition-all duration-200 shadow-md shadow-orange-500/20 active:scale-95"
+                >
+                  View Details
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              ) : (
+                <Link
+                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-xs py-2.5 px-4 rounded-xl transition-all duration-200 shadow-md shadow-orange-500/20 active:scale-95"
+                  href={"/login"}
+                >
+                  Login to view Details
+                </Link>
+              )}
             </div>
           </div>
         ))}

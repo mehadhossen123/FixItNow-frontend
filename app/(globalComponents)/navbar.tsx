@@ -44,13 +44,11 @@ export default function Navbar({ profile }:  NavbarProps ) {
               <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="/about">About</Link>
+              <Link href="/about-us">About Us</Link>
             </li>
+           
             <li>
-              <Link href="/services">Services</Link>
-            </li>
-            <li>
-              <Link href="/contact">Contact</Link>
+              <Link href="/contact-us">Contact</Link>
             </li>
           </ul>
         </div>
@@ -67,10 +65,10 @@ export default function Navbar({ profile }:  NavbarProps ) {
             <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="/more">About</Link>
+            <Link href="/about-us">About us</Link>
           </li>
           <li>
-            <Link href="/contact">Contact</Link>
+            <Link href="/contact-us">Contact us</Link>
           </li>
           <li>
             <Link href="/dashboard">Dashboard</Link>
