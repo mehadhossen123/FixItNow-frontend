@@ -2,6 +2,20 @@
 
 **FixIT Now** is a modern, responsive, and robust Web Application built to connect users with service professionals quickly and seamlessly. Built using **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, and **Axios**.
 
+🚀 **Live Site:** [https://fixitnow-frontend-sigma.vercel.app](https://fixitnow-frontend-sigma.vercel.app)
+
+---
+
+## 🔑 Demo Credentials
+
+To test the application across different user roles, you can use the following credentials:
+
+| Role | Email | Password |
+| :--- | :--- | :--- |
+| **Admin** | `arif2.tech@gmail.com` | `securepassword123` |
+| **Customer** | `arif5.tech@gmail.com` | `securepassword123` |
+| **Technician** | `mehad.tech@gmail.com` | `securepassword123` |
+
 ---
 
 ## ✨ Features
@@ -17,23 +31,29 @@
 
 ## 🛠️ Tech Stack
 
-- **Framework:** [Next.js]
-- **Language:** [TypeScript]
-- **Styling:** [Tailwind CSS]
-- **Icons:** [Lucide React]
-- **HTTP Client:** [Axios]
-**Animation ["framer-motion]
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS & DaisyUI
+- **Icons:** Lucide React
+- **Animations:** Framer Motion
+- **HTTP Client:** Axios
 
 ---
 
-##  Getting Started
+## 🚀 Getting Started
 
 Follow these steps to run the project locally on your machine.
 
 ### 1. Prerequisites
 
-Make sure you have Node.js (v18.x or later) installed.
+Make sure you have Node.js (v18.x or later) installed on your system.
 
+### 2. Installation & Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/mehadhossen123/FixItNow-frontend.git](https://github.com/mehadhossen123/FixItNow-frontend.git)
+   cd FixITNow-frontend
 
 ### 2. Installation
 
