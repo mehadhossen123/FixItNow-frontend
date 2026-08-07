@@ -1,8 +1,12 @@
 "use client"
 
-import React, { useActionState, useState } from 'react'
+import React, { useActionState, useEffect, useState } from 'react'
 import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
 import { loginAction, LoginResponse } from '../_actions/loginAction';
+import { tr } from 'framer-motion/client';
+import { toast } from 'sonner';
+import { useRouter, useSearchParams } from 'next/navigation';
+
 
 const LoginForm = () => {
 
@@ -18,8 +22,18 @@ const LoginForm = () => {
     
     const [showPassword, setShowPassword] =  useState(false);
     const [state, action, isPending] = useActionState(loginAction,initialState );
+    const router=useRouter()
+    const searchUrl=useSearchParams().get("callbackUrl") ||"/"
 
-    
+    useEffect(()=>{
+      
+
+      if(state &&(state.success==true||state.success=="true")){
+        toast.success(state.message)
+        router.push(searchUrl)
+
+      }
+    },[state,router,searchUrl])
 
 
 

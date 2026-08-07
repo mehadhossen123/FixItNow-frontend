@@ -2,7 +2,6 @@
 
 import { fetchAxios } from "@/app/(globalComponents)/axios/axios";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 export interface LoginResponse {
   success: boolean;
@@ -16,12 +15,13 @@ export interface LoginResponse {
 export const loginAction = async (
   prevState: LoginResponse,
   formData: FormData,
-): Promise<LoginResponse> => {
-  let isLoginSuccessful = false;
+) => {
+ 
 
   try {
     const email = formData.get("email");
     const password = formData.get("password");
+    
 
     const payload = {
       email,
@@ -50,13 +50,9 @@ export const loginAction = async (
         maxAge: 60 * 60 * 24 * 7,
         sameSite: "lax",
       });
+      return res.data
 
-      isLoginSuccessful = true; 
-    } else {
-      return {
-        success: false,
-        message: res?.data?.message || "Login failed",
-      };
+     
     }
   } catch (error: any) {
     return {
@@ -67,12 +63,4 @@ export const loginAction = async (
   }
 
  
-  if (isLoginSuccessful) {
-    redirect("/");
-  }
-
-  return {
-    success: false,
-    message: "Something went wrong",
-  };
 };

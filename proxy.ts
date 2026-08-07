@@ -8,7 +8,7 @@ const PUBLIC_PATH=["/dashboard/get-payment-history","/dashboard/get-all-booking"
 
 export async function  proxy(request: NextRequest) {
     const pathname=request.nextUrl.pathname;
-    console.log(pathname)
+  
    
   
 
@@ -25,7 +25,10 @@ export async function  proxy(request: NextRequest) {
 // role based redirect is here 
 
 if (!decode && !(userRole=="CUSTOMER")&& PUBLIC_PATH.includes(pathname)){
-    return NextResponse.redirect(new URL("/login", request.url));
+  const loginUrl = new URL("/login", request.url);
+  loginUrl.searchParams.set("callbackUrl",pathname)
+
+    return NextResponse.redirect(loginUrl);
 
 }
   //   return NextResponse.redirect(new URL("/home", request.url));

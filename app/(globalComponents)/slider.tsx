@@ -11,7 +11,7 @@ const Slider = () => {
         <div className="flex-1 text-center lg:text-left space-y-6">
           {/* Trust Badge */}
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold">
-            <span>⚡  Reliable Service Provider</span>
+            <span>⚡ Reliable Service Provider</span>
           </div>
 
           {/* Main Heading */}
@@ -30,13 +30,13 @@ const Slider = () => {
           {/* Call to Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
             <Link
-              href="/services"
+              href="/dashboard/get-service"
               className="btn btn-primary btn-lg w-full sm:w-auto px-8 shadow-lg shadow-primary/30"
             >
               Book Service Now
             </Link>
             <Link
-              href="/about"
+              href="/dashboard/get-service"
               className="btn btn-outline btn-lg w-full sm:w-auto px-8"
             >
               Explore Services

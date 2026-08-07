@@ -32,7 +32,7 @@ export default function MissionVision() {
 
           <div>
             <Link
-              href="/login"
+              href="/dashboard/get-service"
               className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3.5 rounded-lg shadow-md transition duration-300"
             >
               REGISTER YOUR SERVICE

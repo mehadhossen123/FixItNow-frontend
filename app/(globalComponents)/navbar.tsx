@@ -14,7 +14,7 @@ interface NavbarProps {
 
 export default function Navbar({ profile }:  NavbarProps ) {
   const user: UserProfileResponse | null= profile;
-  console.log("user",user?.data)
+ 
 
   return (
     <div className="navbar    max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
